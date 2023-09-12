@@ -30,4 +30,9 @@ data, err := parser.Data()
 
 Source data such as province code, district, etc. i got from  [here](https://kodewilayah.id/) which based on Permendagri No. 72/2019
 
+## Todo 
+- [ ] add more test case
+- [ ] add proper error message
+- [ ] optimaze code
+
 

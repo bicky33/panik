@@ -42,17 +42,18 @@ func (e *NIK) getSerialNumber() string {
 }
 
 func (e *NIK) IsValid() (bool, error) {
-	numeric := regexp.MustCompile(`^\d+$`).MatchString(e.NIK)
-	if !numeric {
-		return false, nil
+	if len(e.NIK) != 16 {
+		return false, ErrNIKLength
 	}
 
-	if len(e.NIK) != 16 {
-		return false, nil
+	numeric := regexp.MustCompile(`^\d+$`).MatchString(e.NIK)
+
+	if !numeric {
+		return false, ErrNIKMustNumber
 	}
 
 	if !e.isNIKPartsValid() {
-		return false, nil
+		return false, ErrInvalidNIK
 	}
 
 	return true, nil
